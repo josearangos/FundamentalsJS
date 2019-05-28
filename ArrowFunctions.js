@@ -1,7 +1,7 @@
 var pedro = {
   name: "Pedro",
   lastName: "Arango",
-  years: 19
+  years: 17
 };
 //Method normal
 const isOlder = function(person) {
