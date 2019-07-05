@@ -32,6 +32,26 @@ getPersonage(5);
 */
 
 //The order is Random
+//*******ORDER IN CALLBACKS************** */
+
+function getPersonage1(id, callback) {
+  const URL = `${API_URL}${PEOPLE_URL.replace(":id", id)}`;
+  $.get(URL, opts, function(personage) {
+    console.log(`Hi, I'm ${personage.name}`);
+    if (callback) {
+      callback();
+    }
+  });
+}
+getPersonage1(1, function() {
+  getPersonage1(2, function() {
+    getPersonage1(3, function() {
+      getPersonage1(4, function() {
+        getPersonage(5, function() {});
+      });
+    });
+  });
+});
 
 //*******ORDER IN CALLBACKS************** */
 function getPersonage2(id, callback) {
@@ -59,4 +79,11 @@ getPersonage2(1, function(personage) {
   });
 });
 
-// Magnate Error Callbacks
+// MAGNATE ERROR CALLBACKS
+function getPersonage2(id, callback) {
+  const URL = `${API_URL}${PEOPLE_URL.replace(":id", id)}`;
+  $.get(URL, opts, callback)
+  .fail(() => {
+    console.log(`Error with ${id}`);
+  });
+}

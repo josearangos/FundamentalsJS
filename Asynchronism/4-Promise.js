@@ -35,10 +35,10 @@ function getPersonage(id) {
   });
 }
 
-getPersonage(5)
+getPersonage(9)
   .then(Personage => {
     console.log(`The personage five is  ${Personage.name}`);
   })
-  .catch(()={
-      
+  .catch(id => {
+    console.log(`Error with the personage ${id}`);
   });
